@@ -112,13 +112,17 @@ body {
 /* Hero */
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    position: relative;
+    background-image: url('images/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto parallax */
+    position: relative; /* CAMBIAR DE relative A NORMAL */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--white);
+    z-index: 1; /* AÑADIR ESTO */
 }
 
 .hero-overlay {
@@ -243,6 +247,8 @@ section {
 /* Quiénes Somos */
 .about {
     background: var(--bg-light);
+    position: relative; /* AÑADIR ESTO */
+    z-index: 2; /* AÑADIR ESTO - Mayor que hero */
 }
 
 .about-intro {
