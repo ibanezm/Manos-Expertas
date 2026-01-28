@@ -53,14 +53,28 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px 20px;
+    min-height: 85px;
 }
 
+/* Logo en header - CORREGIDO: MÁS GRANDE */
 .logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--primary-color);
-    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-img {
+    height: 65px;
+    width: auto;
+    max-width: 320px;
+    display: block;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.logo-img:hover {
+    opacity: 0.8;
 }
 
 .nav {
@@ -109,20 +123,125 @@ body {
     transition: var(--transition);
 }
 
+/* Franja de WhatsApp - CORREGIDO: AJUSTADA PARA NO SUPERPONERSE */
+.whatsapp-banner {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    right: 0;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.5s ease;
+}
+
+.whatsapp-banner .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.whatsapp-banner p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.whatsapp-link {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.whatsapp-link:hover {
+    color: #128C7E;
+}
+
+.close-banner {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: var(--transition);
+}
+
+.close-banner:hover {
+    opacity: 0.7;
+}
+
+.whatsapp-banner.hidden {
+    display: none;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    z-index: 998;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float svg {
+    width: 35px;
+    height: 35px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7);
+    }
+}
+
 /* Hero */
 .hero {
     height: 100vh;
     background-image: url('images/hero-background.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efecto parallax */
-    position: relative; /* CAMBIAR DE relative A NORMAL */
+    background-attachment: fixed;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--white);
-    z-index: 1; /* AÑADIR ESTO */
+    z-index: 1;
 }
 
 .hero-overlay {
@@ -131,7 +250,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
@@ -141,28 +260,12 @@ body {
     padding: 0 20px;
 }
 
-/* Hero */
-.hero {
-    height: 100vh;
-    background-image: url('images/hero-background.jpg'); /* IMAGEN AÑADIDA AQUÍ */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Efecto parallax */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Oscurece la imagen para que el texto sea legible */
+.hero-title {
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
@@ -247,8 +350,8 @@ section {
 /* Quiénes Somos */
 .about {
     background: var(--bg-light);
-    position: relative; /* AÑADIR ESTO */
-    z-index: 2; /* AÑADIR ESTO - Mayor que hero */
+    position: relative;
+    z-index: 2;
 }
 
 .about-intro {
@@ -260,35 +363,70 @@ section {
     color: var(--text-light);
 }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 60px;
+/* Sección de Testimonios */
+.testimonials-section {
+    margin-top: 80px;
 }
 
-.about-item {
-    background: var(--white);
-    padding: 40px;
+.testimonials-title {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.about-item:hover {
-    transform: translateY(-10px);
+.testimonial-card:hover {
+    transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.about-item h3 {
-    font-size: 24px;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
+.testimonial-stars {
+    color: #FFD700;
+    font-size: 20px;
+    letter-spacing: 2px;
 }
 
-.about-item p {
+.testimonial-text {
     color: var(--text-light);
-    line-height: 1.8;
+    line-height: 1.7;
+    font-style: italic;
+    flex-grow: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 15px;
+    border-top: 2px solid var(--bg-light);
+}
+
+.testimonial-author strong {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.testimonial-author span {
+    color: var(--text-light);
+    font-size: 14px;
 }
 
 /* Servicios */
@@ -339,7 +477,6 @@ section {
     color: var(--text-light);
     line-height: 1.7;
 }
-
 /* Proyectos */
 .projects {
     background: var(--bg-light);
@@ -351,67 +488,22 @@ section {
     gap: 30px;
 }
 
-.project-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    height: 350px;
-    cursor: pointer;
-}
-
-.project-image {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: var(--transition);
-}
-
-.project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(44, 62, 80, 0.85);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    opacity: 0;
-    transition: var(--transition);
-    color: var(--white);
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-card:hover .project-image {
-    transform: scale(1.1);
-}
-
-.project-overlay h3 {
-    font-size: 26px;
-    margin-bottom: 10px;
-}
-
-.project-overlay p {
-    font-size: 16px;
-    opacity: 0.9;
-}
-
-/* Contacto */
+/* Contacto actualizado con formulario */
 .contact {
     background: var(--white);
 }
 
-.contact-grid {
+.contact-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
     margin-top: 60px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .contact-item {
@@ -450,6 +542,108 @@ section {
     margin-bottom: 5px;
 }
 
+/* Enlaces en contacto */
+.contact-item a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-item a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Formulario de contacto */
+.contact-form-container {
+    background: var(--bg-light);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form-container h3 {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: var(--transition);
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-submit {
+    padding: 15px 40px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background: #d35400;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+}
+
+.form-message {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    display: none;
+}
+
+.form-message.success {
+    display: block;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+    display: block;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
 /* Footer */
 .footer {
     background: var(--primary-color);
@@ -470,6 +664,24 @@ section {
     letter-spacing: 1px;
 }
 
+/* Logo en footer - CORREGIDO: MÁS PEQUEÑO Y CENTRADO */
+.footer-logo-container {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.footer-logo-img {
+    height: 50px;
+    width: auto;
+    display: inline-block;
+    filter: brightness(1);
+    transition: var(--transition);
+}
+
+.footer-logo-img:hover {
+    filter: brightness(1.2);
+}
+
 .footer-text {
     margin-bottom: 20px;
     opacity: 0.9;
@@ -479,6 +691,61 @@ section {
 .footer-copy {
     opacity: 0.7;
     font-size: 14px;
+}
+/* ========================================
+   REDES SOCIALES EN FOOTER
+   ======================================== */
+
+.social-media {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+}
+
+.social-link svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Logo en el hero (opcional) */
+.hero-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 30px;
+    opacity: 0;
+}
+
+/* Labels ocultos para accesibilidad */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 /* Animación de scroll */
@@ -492,8 +759,178 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+/* ========================================
+   CARRUSEL DE PROYECTOS
+   ======================================== */
 
+/* Actualizar estilos de project-card */
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 350px;
+    cursor: pointer;
+}
+
+.project-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Botones de navegación del carrusel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.project-card:hover .carousel-btn {
+    opacity: 1;
+}
+
+.carousel-btn.prev {
+    left: 15px;
+}
+
+.carousel-btn.next {
+    right: 15px;
+}
+
+.carousel-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-color);
+}
+
+.carousel-btn:hover svg {
+    color: white;
+}
+
+/* Indicadores del carrusel */
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-indicator.active {
+    background: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+/* Actualizar overlay para que funcione con carrusel */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(44, 62, 80, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    opacity: 0;
+    transition: var(--transition);
+    color: var(--white);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-overlay h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.project-overlay p {
+    font-size: 16px;
+    opacity: 0.9;
+    text-align: center;
+}
+
+/* Animación suave para el cambio de slides */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   FIN CARRUSEL DE PROYECTOS
+   ======================================== */
 /* Responsive */
+@media (max-width: 968px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -521,6 +958,28 @@ section {
         font-size: 18px;
     }
 
+    /* RESPONSIVE - Logo header en tablet/móvil */
+    .logo-img {
+        height: 50px;
+        max-width: 250px;
+    }
+    
+    /* Header más compacto en móvil */
+    .header .container {
+        padding: 12px 20px;
+        min-height: 70px;
+    }
+    
+    /* Ajuste banda WhatsApp en móvil */
+    .whatsapp-banner {
+        top: 70px;
+    }
+    
+    /* Logo footer en móvil */
+    .footer-logo-img {
+        height: 45px;
+    }
+    
     .hero-title {
         font-size: 48px;
     }
@@ -533,19 +992,65 @@ section {
         font-size: 36px;
     }
 
-    .about-grid,
     .services-grid,
     .projects-grid,
-    .contact-grid {
+    .testimonials-grid {
         grid-template-columns: 1fr;
     }
 
     section {
         padding: 60px 0;
     }
+
+    .whatsapp-banner p {
+        font-size: 13px;
+    }
+
+    .whatsapp-banner .container {
+        gap: 10px;
+    }
+
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .whatsapp-float svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .hero-logo {
+        width: 120px;
+    }
 }
 
 @media (max-width: 480px) {
+    /* Logo header en móviles pequeños */
+    .logo-img {
+        height: 45px;
+        max-width: 200px;
+    }
+    
+    /* Header aún más compacto */
+    .header .container {
+        padding: 10px 15px;
+        min-height: 65px;
+    }
+    
+    /* Ajuste banda WhatsApp en móviles pequeños */
+    .whatsapp-banner {
+        top: 65px;
+        padding: 10px 15px;
+    }
+    
+    /* Logo footer en móviles pequeños */
+    .footer-logo-img {
+        height: 40px;
+    }
+    
     .hero-title {
         font-size: 36px;
     }
@@ -561,5 +1066,20 @@ section {
     .btn-hero {
         padding: 15px 35px;
         font-size: 14px;
+    }
+.btn-hero {
+        padding: 15px 35px;
+        font-size: 14px;
+    }
+    
+    /* Redes sociales responsive */
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .social-link svg {
+        width: 20px;
+        height: 20px;
     }
 }

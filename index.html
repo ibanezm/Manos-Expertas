@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manos Expertas - Construcción Profesional</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Manos Expertas - Construcción y Remodelación Profesional en Chile</title>
+    <meta name="description" content="Empresa de construcción especializada en terminaciones, remodelaciones y protección de superficies. Servicios residenciales, comerciales e industriales en Santiago, Chile.">
+    <meta name="keywords" content="construcción, remodelación, pintura, revestimientos, terminaciones, Santiago, Chile, cubiertas, espacios comerciales">
+    <meta name="author" content="Manos Expertas">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.manosexpertas.com/">
+    <meta property="og:title" content="Manos Expertas - Construcción Profesional">
+    <meta property="og:description" content="Empresa de construcción especializada en terminaciones, remodelaciones y protección de superficies.">
+    <meta property="og:image" content="https://www.manosexpertas.com/images/logos/manos-expertas-logo-horizontal.png">
+    
+    <!-- Instagram Meta Tags -->
+    <meta property="og:site_name" content="Manos Expertas">
+    <meta property="instagram:card" content="summary_large_image">
+    <meta property="instagram:title" content="Manos Expertas - Construcción Profesional">
+    <meta property="instagram:description" content="Síguenos en Instagram para ver nuestros proyectos y trabajos. Construcción, remodelación y más.">
+    <meta property="instagram:image" content="https://www.manosexpertas.com/images/logos/manos-expertas-logo-horizontal.png">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logos/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon.png">
+    <link rel="apple-touch-icon" href="images/logos/manos-expertas-isotipo.png">
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="images/logos/manos-expertas-logo-horizontal.png" as="image">
+    <link rel="preload" href="images/hero-background.jpg" as="image">
 </head>
 <body>
     <!-- Header fijo -->
     <header class="header" id="header">
         <div class="container">
-            <div class="logo">MANOS EXPERTAS</div>
+            <!-- Logo con imagen horizontal -->
+            <div class="logo">
+                <img src="images/logos/manos-expertas-logo-horizontal.png" 
+                     alt="Manos Expertas - Construcción Profesional" 
+                     class="logo-img">
+            </div>
             <nav class="nav">
                 <a href="#inicio" class="nav-link">Inicio</a>
                 <a href="#nosotros" class="nav-link">Nosotros</a>
@@ -26,10 +61,32 @@
         </div>
     </header>
 
+    <!-- Franja de WhatsApp -->
+    <div class="whatsapp-banner" id="whatsapp-banner">
+        <div class="container">
+            <p>¿Necesitas una cotización? <a href="https://wa.me/56921943735?text=Hola,%20necesito%20información%20sobre%20sus%20servicios" target="_blank" class="whatsapp-link">Contáctanos por WhatsApp</a></p>
+            <button class="close-banner" id="close-banner" aria-label="Cerrar banner">✕</button>
+        </div>
+    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/56921943735?text=Hola,%20necesito%20información%20sobre%20sus%20servicios" 
+       class="whatsapp-float" 
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" fill="white" aria-hidden="true">
+            <path d="M16 0C7.164 0 0 7.163 0 16c0 2.825.736 5.483 2.022 7.792L0 32l8.448-2.016C10.712 31.264 13.296 32 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.496 0-4.877-.672-6.912-1.92l-.496-.288-5.12 1.216 1.232-5.024-.32-.512A13.256 13.256 0 0 1 2.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333z"/>
+            <path d="M23.147 19.107c-.384-.192-2.277-1.12-2.629-1.248-.352-.128-.608-.192-.864.192-.256.384-1.003 1.248-1.227 1.504-.224.256-.448.288-.832.096-.384-.192-1.632-.597-3.104-1.92-1.152-1.024-1.92-2.293-2.144-2.677-.224-.384-.024-.592.168-.784.176-.176.384-.448.576-.672.192-.224.256-.384.384-.64.128-.256.064-.48-.032-.672-.096-.192-.864-2.08-1.184-2.848-.32-.747-.64-.64-.864-.64h-.736c-.256 0-.672.096-1.024.48-.352.384-1.344 1.312-1.344 3.2s1.376 3.712 1.568 3.968c.192.256 2.688 4.16 6.56 5.792.928.384 1.648.608 2.208.768.928.288 1.76.256 2.432.16.736-.112 2.277-.928 2.597-1.824.32-.896.32-1.664.224-1.824-.096-.16-.352-.256-.736-.448z"/>
+        </svg>
+    </a>
+
     <!-- Sección Hero -->
     <section class="hero" id="inicio">
         <div class="hero-overlay"></div>
         <div class="hero-content">
+            <!-- Logo isotipo grande en el hero (opcional, comenta si no quieres) -->
+            <!-- <img src="images/logos/manos-expertas-isotipo.png" alt="Manos Expertas" class="hero-logo fade-in"> -->
             <h1 class="hero-title fade-in">MANOS EXPERTAS</h1>
             <p class="hero-subtitle fade-in">Construyendo el futuro con experiencia, calidad y compromiso</p>
             <a href="#proyectos" class="btn-hero fade-in">Ver Proyectos</a>
@@ -41,192 +98,373 @@
         <div class="container">
             <h2 class="section-title scroll-fade">Quiénes Somos</h2>
             <div class="about-intro scroll-fade">
-                <p>Somos una empresa pequeña, formada por un equipo joven y comprometido con el trabajo bien hecho. Nos especializamos en proyectos de terminación, mejora y acondicionamiento de espacios, poniendo especial atención en los detalles, la durabilidad y la calidad de cada intervención.Creemos en un trato directo, honesto y cercano con nuestros clientes. Cada proyecto lo abordamos como si fuera propio, buscando siempre soluciones precisas, funcionales y estéticamente cuidadas.</p>
+                <p>Somos una empresa pequeña, formada por un equipo joven y comprometido con el trabajo bien hecho. Nos especializamos en proyectos de terminación, mejora y acondicionamiento de espacios, poniendo especial atención en los detalles, la durabilidad y la calidad de cada intervención. Creemos en un trato directo, honesto y cercano con nuestros clientes. Cada proyecto lo abordamos como si fuera propio, buscando siempre soluciones precisas, funcionales y estéticamente cuidadas.</p>
             </div>
-            <div class="about-grid">
-                <div class="about-item scroll-fade">
-                    <h3>Misión</h3>
-                    <p>Proporcionar servicios de construcción de excelencia que superen las expectativas de nuestros clientes, garantizando calidad, seguridad y cumplimiento en cada proyecto que emprendemos.</p>
-                </div>
-                <div class="about-item scroll-fade">
-                    <h3>Visión</h3>
-                    <p>Ser reconocidos como la empresa constructora más confiable y innovadora del sector, destacando por nuestra capacidad técnica, compromiso ambiental y responsabilidad social.</p>
-                </div>
-                <div class="about-item scroll-fade">
-                    <h3>Valores</h3>
-                    <p>Integridad, excelencia, innovación, trabajo en equipo y respeto por el medio ambiente. Estos principios guían cada una de nuestras decisiones y acciones en el desarrollo de proyectos.</p>
+            
+            <!-- Sección de Testimonios -->
+            <div class="testimonials-section">
+                <h3 class="testimonials-title scroll-fade">Lo que dicen nuestros clientes</h3>
+                <div class="testimonials-grid">
+                    <article class="testimonial-card scroll-fade">
+                        <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+                        <p class="testimonial-text">“Llevamos varios años trabajando con Manos Expertas y siempre han demostrado un alto nivel de compromiso, prolijidad y cumplimiento. Su forma de trabajar nos da la tranquilidad de contar con un equipo confiable, incluso en proyectos exigentes y con plazos ajustados.”</p>
+                        <div class="testimonial-author">
+                            <strong>Simón Muñoz</strong>
+                            <span>Constructora y Montaje Red del Cobre</span>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card scroll-fade">
+                        <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+                        <p class="testimonial-text">“Destaco especialmente la calidad de las terminaciones y la atención al detalle. Manos Expertas entiende la importancia del acabado final en un proyecto arquitectónico y responde siempre con un estándar de excelencia.”</p>
+                        <div class="testimonial-author">
+                            <strong>Denisse Jones</strong>
+                            <span>Cubo Luz</span>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card scroll-fade">
+                        <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+                        <p class="testimonial-text">“Trabajar con Manos Expertas ha sido una experiencia muy positiva. Son ordenados, responsables y cuidan cada etapa del proceso, logrando resultados consistentes y bien ejecutados.”</p>
+                        <div class="testimonial-author">
+                            <strong>Sergio Meléndez</strong>
+                            <span>Aquelarre</span>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card scroll-fade">
+                        <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+                        <p class="testimonial-text">“Quedé muy conforme con el trabajo realizado. Además de la dedicación y el buen resultado final, destaco la cercanía y amabilidad en el trato, siempre dispuestos a responder dudas y a orientar durante todo el proceso.”</p>
+                        <div class="testimonial-author">
+                            <strong>Juan Dujisin</strong>
+                            <span>Proyecto Residencial</span>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- Sección Servicios -->
-<section class="services" id="servicios">
-    <div class="container">
-        <h2 class="section-title scroll-fade">Nuestros Servicios</h2>
-        <div class="services-grid">
-            <div class="service-card scroll-fade">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                    </svg>
-                </div>
-                <h3>Revestimientos y Protección de Superficies</h3>
-                <p>Aplicación profesional de recubrimientos protectores y decorativos en superficies interiores y exteriores, garantizando durabilidad y acabados de calidad superior.</p>
-            </div>
-            <div class="service-card scroll-fade">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
-                </div>
-                <h3>Terminaciones de Interiores</h3>
-                <p>Ejecución de acabados y detalles finales en espacios interiores, con especial cuidado en la estética y funcionalidad de cada ambiente.</p>
-            </div>
-            <div class="service-card scroll-fade">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                </div>
-                <h3>Mejoramiento de Espacios Residenciales</h3>
-                <p>Renovación y acondicionamiento de viviendas particulares, transformando espacios con soluciones personalizadas y materiales de calidad.</p>
-            </div>
-            <div class="service-card scroll-fade">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                    </svg>
-                </div>
-                <h3>Soluciones para Espacios Comerciales</h3>
-                <p>Intervenciones decorativas y funcionales en locales comerciales, adaptando cada proyecto a las necesidades específicas del negocio.</p>
-            </div>
-            <div class="service-card scroll-fade">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                        <polyline points="2 17 12 22 22 17"></polyline>
-                        <polyline points="2 12 12 17 22 12"></polyline>
-                    </svg>
-                </div>
-                <h3>Trabajos en Superficies Industriales</h3>
-                <p>Aplicación de recubrimientos especializados en entornos productivos, priorizando la resistencia y protección de superficies de trabajo.</p>
-            </div>
-            <div class="service-card scroll-fade">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                        <path d="M2 17l10 5 10-5"></path>
-                        <path d="M2 12l10 5 10-5"></path>
-                    </svg>
-                </div>
-                <h3>Diseño y Construcción de Cubiertas</h3>
-                <p>Planificación y ejecución de soluciones de techado exterior, combinando funcionalidad y diseño adaptado a cada proyecto.</p>
+    <!-- Sección Servicios -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2 class="section-title scroll-fade">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <article class="service-card scroll-fade">
+                    <div class="service-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Revestimientos y Protección de Superficies</h3>
+                    <p>Aplicación profesional de recubrimientos protectores y decorativos en superficies interiores y exteriores, garantizando durabilidad y acabados de calidad superior.</p>
+                </article>
+                <article class="service-card scroll-fade">
+                    <div class="service-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </div>
+                    <h3>Terminaciones de Interiores</h3>
+                    <p>Ejecución de acabados y detalles finales en espacios interiores, con especial cuidado en la estética y funcionalidad de cada ambiente.</p>
+                </article>
+                <article class="service-card scroll-fade">
+                    <div class="service-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Mejoramiento de Espacios Residenciales</h3>
+                    <p>Renovación y acondicionamiento de viviendas particulares, transformando espacios con soluciones personalizadas y materiales de calidad.</p>
+                </article>
+                <article class="service-card scroll-fade">
+                    <div class="service-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                    </div>
+                    <h3>Soluciones para Espacios Comerciales</h3>
+                    <p>Intervenciones decorativas y funcionales en locales comerciales, adaptando cada proyecto a las necesidades específicas del negocio.</p>
+                </article>
+                <article class="service-card scroll-fade">
+                    <div class="service-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Trabajos en Superficies Industriales</h3>
+                    <p>Aplicación de recubrimientos especializados en entornos productivos, priorizando la resistencia y protección de superficies de trabajo.</p>
+                </article>
+                <article class="service-card scroll-fade">
+                    <div class="service-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Diseño y Construcción de Cubiertas</h3>
+                    <p>Planificación y ejecución de soluciones de techado exterior, combinando funcionalidad y diseño adaptado a cada proyecto.</p>
+                </article>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+<!-- Sección Proyectos con Carrusel -->
 <section class="projects" id="proyectos">
     <div class="container">
         <h2 class="section-title scroll-fade">Proyectos Destacados</h2>
-
         <div class="projects-grid">
-
-            <div class="project-card scroll-fade">
-                <div class="project-image" style="background-image: url('images/proyecto-1.jpg');"></div>
+            
+            <!-- Proyecto 1: Industrial -->
+            <article class="project-card scroll-fade">
+                <div class="project-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('images/proyectos/proyecto-industrial/foto-1.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-industrial/foto-2.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-industrial/foto-3.jpg');"></div>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-indicators"></div>
+                </div>
                 <div class="project-overlay">
                     <h3>Protección Industrial de Superficies</h3>
                     <p>Soluciones de protección y durabilidad para superficies productivas</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="project-card scroll-fade">
-                <div class="project-image" style="background-image: url('images/proyecto-2.jpg');"></div>
+            <!-- Proyecto 2: Comercial -->
+            <article class="project-card scroll-fade">
+                <div class="project-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('images/proyectos/proyecto-comercial/foto-1.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-comercial/foto-2.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-comercial/foto-3.jpg');"></div>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-indicators"></div>
+                </div>
                 <div class="project-overlay">
                     <h3>Intervención Decorativa en Espacios Comerciales</h3>
                     <p>Instalación de revestimientos murales</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="project-card scroll-fade">
-                <div class="project-image" style="background-image: url('images/proyecto-3.jpg');"></div>
+            <!-- Proyecto 3: Interiores -->
+            <article class="project-card scroll-fade">
+                <div class="project-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('images/proyectos/proyecto-interiores/foto-1.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-interiores/foto-2.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-interiores/foto-3.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-interiores/foto-4.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-interiores/foto-5.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-interiores/foto-6.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-interiores/foto-7.jpg');"></div>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-indicators"></div>
+                </div>
                 <div class="project-overlay">
                     <h3>Acondicionamiento de Ambientes Interiores</h3>
                     <p>Terminaciones de pintura para viviendas particulares</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="project-card scroll-fade">
-                <div class="project-image" style="background-image: url('images/proyecto-4.jpg');"></div>
+            <!-- Proyecto 4: Exteriores -->
+            <article class="project-card scroll-fade">
+                <div class="project-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('images/proyectos/proyecto-exteriores/foto-1.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-exteriores/foto-2.jpg');"></div>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-indicators"></div>
+                </div>
                 <div class="project-overlay">
                     <h3>Diseño y Terminaciones de Espacios Exteriores</h3>
                     <p>Soluciones estéticas y funcionales en superficies exteriores</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="project-card scroll-fade">
-                <div class="project-image" style="background-image: url('images/proyecto-5.jpg');"></div>
+            <!-- Proyecto 5: Diseño Interior -->
+            <article class="project-card scroll-fade">
+                <div class="project-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('images/proyectos/proyecto-diseno/foto-1.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-diseno/foto-2.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-diseno/foto-3.jpg');"></div>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-indicators"></div>
+                </div>
                 <div class="project-overlay">
                     <h3>Detalles y Acabados de Diseño Interior</h3>
                     <p>Obras de acabado y mejora visual en interiores</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="project-card scroll-fade">
-                <div class="project-image" style="background-image: url('images/proyecto-6.jpg');"></div>
+            <!-- Proyecto 6: Cubiertas -->
+            <article class="project-card scroll-fade">
+                <div class="project-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-slide active" style="background-image: url('images/proyectos/proyecto-cubiertas/foto-1.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/proyectos/proyecto-cubiertas/foto-2.jpg');"></div>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-indicators"></div>
+                </div>
                 <div class="project-overlay">
                     <h3>Soluciones de Cubierta para Vivienda</h3>
                     <p>Diseño y ejecución de techumbres exteriores funcionales</p>
                 </div>
-            </div>
+            </article>
 
         </div>
     </div>
 </section>
-
-
     <!-- Sección Contacto -->
     <section class="contact" id="contacto">
         <div class="container">
             <h2 class="section-title scroll-fade">Contacto</h2>
-            <div class="contact-grid">
-                <div class="contact-item scroll-fade">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Email</h3>
-                    <p>contacto@manosexpertas.com</p>
-                    <p>ventas@manosexpertas.com</p>
+            
+            <div class="contact-wrapper">
+                <!-- Información de contacto -->
+                <div class="contact-info">
+                    <article class="contact-item scroll-fade">
+                        <div class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:contacto@manosexpertas.com">contacto@manosexpertas.com</a></p>
+                    </article>
+                    <article class="contact-item scroll-fade">
+                        <div class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <h3>Teléfono</h3>
+                        <p><a href="tel:+56921943735">+56 9 2194 3735</a></p>
+                    </article>
+                    <article class="contact-item scroll-fade">
+                        <div class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3>Ubicación</h3>
+                        <p>Av. Providencia 1208, Oficina 1603</p>
+                        <p>Providencia, Región Metropolitana, Chile</p>
+                    </article>
                 </div>
-                <div class="contact-item scroll-fade">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                    </div>
-                    <h3>Teléfono</h3>
-                    <p>+56 2 2345 6789</p>
-                    <p>+56 9 8765 4321</p>
-                </div>
-                <div class="contact-item scroll-fade">
-                    <div class="contact-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                    </div>
-                    <h3>Ubicación</h3>
-                    <p>Av. Libertador Bernardo O'Higgins 1234</p>
-                    <p>Santiago, Región Metropolitana, Chile</p>
+
+                <!-- Formulario de contacto -->
+                <div class="contact-form-container scroll-fade">
+                    <h3>Envíanos un mensaje</h3>
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkorokqo" method="POST">
+                        <div class="form-group">
+                            <label for="nombre" class="sr-only">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="sr-only">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono" class="sr-only">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio" class="sr-only">Servicio</label>
+                            <select id="servicio" name="servicio" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="Revestimientos y Protección">Revestimientos y Protección</option>
+                                <option value="Terminaciones de Interiores">Terminaciones de Interiores</option>
+                                <option value="Espacios Residenciales">Espacios Residenciales</option>
+                                <option value="Espacios Comerciales">Espacios Comerciales</option>
+                                <option value="Superficies Industriales">Superficies Industriales</option>
+                                <option value="Cubiertas y Techados">Cubiertas y Techados</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje" class="sr-only">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+                        </div>
+                        
+                        <!-- Campo oculto para mejorar la organización -->
+                        <input type="hidden" name="_subject" value="Nueva consulta desde Manos Expertas">
+                        
+                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                        <div class="form-message" id="formMessage" role="alert"></div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -236,8 +474,21 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">MANOS EXPERTAS</div>
-                <p class="footer-text">Construyendo sueños con profesionalismo y dedicación desde 2002</p>
+                
+<!-- Redes Sociales -->
+                <div class="social-media">
+                    <a href="https://www.instagram.com/manosexpertas.cl/" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link"
+                       aria-label="Síguenos en Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <p class="footer-text">Construyendo sueños con profesionalismo y dedicación</p>
                 <p class="footer-copy">&copy; 2026 Manos Expertas. Todos los derechos reservados.</p>
             </div>
         </div>
