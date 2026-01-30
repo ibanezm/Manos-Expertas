@@ -364,6 +364,11 @@ section {
 }
 
 /* Sección de Testimonios */
+.testimonials {
+    background: var(--white);
+    padding: 100px 0;
+}
+
 .testimonials-section {
     margin-top: 80px;
 }
@@ -488,9 +493,54 @@ section {
     gap: 30px;
 }
 
-/* Contacto actualizado con formulario */
+/* ============================================
+   CONTACTO CON IMAGEN DE FONDO
+   ============================================ */
+
+/* Contacto actualizado con formulario - CON IMAGEN DE FONDO */
 .contact {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
     background: var(--white);
+}
+
+/* Imagen de fondo del contacto */
+.contact-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/contact-background.jpg'); /* AQUÍ VA TU IMAGEN */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Efecto parallax */
+    z-index: 1;
+}
+
+/* Overlay oscuro sobre la imagen */
+.contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Ajusta la opacidad aquí: 0.3 = más claro, 0.8 = más oscuro */
+    z-index: 2;
+}
+
+/* El contenido debe estar por encima del fondo */
+.contact .container {
+    position: relative;
+    z-index: 3;
+}
+
+/* Título blanco para que se vea sobre la imagen */
+.contact .section-title {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .contact-wrapper {
@@ -506,17 +556,20 @@ section {
     gap: 30px;
 }
 
+/* Tarjetas de contacto con fondo semi-transparente */
 .contact-item {
     text-align: center;
     padding: 40px 20px;
-    background: var(--bg-light);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     transition: var(--transition);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 .contact-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .contact-icon {
@@ -554,12 +607,13 @@ section {
     text-decoration: underline;
 }
 
-/* Formulario de contacto */
+/* Formulario de contacto con fondo semi-transparente */
 .contact-form-container {
-    background: var(--bg-light);
+    background: rgba(248, 249, 250, 0.95);
+    backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form-container h3 {
@@ -1025,6 +1079,11 @@ section {
     .hero-logo {
         width: 120px;
     }
+    
+    /* Desactivar parallax en móvil para contacto */
+    .contact-background {
+        background-attachment: scroll;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1064,10 +1123,6 @@ section {
     }
 
     .btn-hero {
-        padding: 15px 35px;
-        font-size: 14px;
-    }
-.btn-hero {
         padding: 15px 35px;
         font-size: 14px;
     }
