@@ -290,6 +290,7 @@
     </div>
 </section>
 
+
 <!-- Testimonios -->
 <section class="testimonials" id="testimonios" aria-label="Testimonios de clientes">
     <div class="testimonials-container">
@@ -313,6 +314,122 @@
     </div>
 </section>
 
+<section class="instagram-section" id="instagram">
+  <div class="ig-inner">
+
+    <div class="ig-text">
+      <span class="ig-eyebrow">Instagram</span>
+      <h2 class="ig-title">Últimos proyectos<br>y novedades</h2>
+      <p class="ig-desc">Síguenos en Instagram para ver nuestras actualizaciones, trabajos recientes y el proceso detrás de cada proyecto.</p>
+      <a
+        href="https://www.instagram.com/manos_expertas_spa/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ig-btn"
+      >
+        Ver perfil @manos_expertas_spa
+        <svg viewBox="0 0 20 20" fill="none" width="14" height="14">
+          <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="ig-widget-wrap">
+      <behold-widget feed-id="dtUf12zSoK6Ii1ys1Z8j"></behold-widget>
+      <script>
+        (() => {
+          const d=document,s=d.createElement("script");s.type="module";
+          s.src="https://w.behold.so/widget.js";d.head.append(s);
+        })();
+      </script>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.instagram-section {
+  background: var(--white);
+  padding: 100px 0;
+  border-top: 1px solid var(--border-gray);
+}
+
+.ig-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.ig-eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 12px;
+}
+
+.ig-title {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.ig-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-gray);
+  margin-bottom: 32px;
+}
+
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--coral);
+  text-decoration: none;
+  padding: 12px 22px;
+  transition: opacity 0.25s;
+  letter-spacing: 0.03em;
+}
+
+.ig-btn:hover { opacity: 0.88; }
+
+.ig-widget-wrap {
+  width: 100%;
+  min-height: 200px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ig-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 0 40px;
+  }
+  .ig-title { font-size: 28px; }
+}
+
+@media (max-width: 768px) {
+  .instagram-section { padding: 64px 0; }
+  .ig-inner { padding: 0 24px; gap: 28px; }
+}
+
+@media (max-width: 480px) {
+  .ig-inner { padding: 0 16px; }
+  .ig-btn { width: 100%; justify-content: center; }
+}
+</style>
 <!-- Contacto -->
 <section class="contact" id="contacto" aria-label="Contacto Manos Expertas">
     <div class="contact-container">
