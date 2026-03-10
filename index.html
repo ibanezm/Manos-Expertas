@@ -33,6 +33,63 @@
     }
     </script>
 
+    <!-- ═══════════════════════════════════
+         RESOURCE HINTS — terceros
+    ════════════════════════════════════ -->
+    <link rel="dns-prefetch" href="//w.behold.so">
+    <link rel="dns-prefetch" href="//formspree.io">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="preconnect" href="https://w.behold.so" crossorigin>
+    <link rel="preconnect" href="https://formspree.io" crossorigin>
+
+    <!-- ═══════════════════════════════════
+         PRELOAD — recursos críticos (LCP)
+    ════════════════════════════════════ -->
+    <link rel="preload" as="image"
+          href="images/hero-background.webp"
+          type="image/webp">
+    <link rel="preload" as="style" href="style.css">
+
+    <!-- ═══════════════════════════════════
+         CRITICAL CSS — above the fold inline
+         Evita render-blocking para header + hero
+    ════════════════════════════════════ -->
+    <style>
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{
+        --coral:#FF6347;--dark-gray:#3D3D3D;--charcoal:#2B2B2B;
+        --white:#FFFFFF;--brand-orange:#E17234;--brand-blue:#2B5A6E;
+      }
+      body{font-family:'Helvetica Neue',Arial,sans-serif;overflow-x:hidden;line-height:1.6;color:#333}
+      .header{position:fixed;top:0;left:0;right:0;background:var(--dark-gray);z-index:1000;padding:0;transition:box-shadow 0.3s}
+      .header-content{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:16px 60px}
+      .logo-box{border:3px solid var(--white);padding:10px 20px;cursor:pointer}
+      .logo-name{font-size:20px;font-weight:700;color:var(--white);letter-spacing:1px}
+      .logo-subtitle{font-size:11px;color:var(--white);letter-spacing:0.5px;font-weight:400}
+      .logo-manos{color:var(--brand-orange)}.logo-expertas{color:var(--brand-blue)}
+      .hero{height:100vh;min-height:600px;background-color:var(--charcoal);background-image:url('images/hero-background.webp');background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;position:relative;margin-top:72px;contain:layout}
+      .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.38)}
+      .hero-content{position:relative;z-index:2;text-align:center;color:var(--white);max-width:900px;padding:0 24px}
+      .hero-title{font-size:clamp(52px,10vw,110px);font-weight:700;line-height:1.05;margin-bottom:20px}
+      .hero-manos{color:var(--brand-orange)}.hero-expertas{color:var(--brand-blue)}
+      .hero-subtitle{font-size:clamp(16px,2.5vw,26px);font-weight:300;margin-bottom:40px;letter-spacing:0.5px}
+      .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+      .btn-primary{background:var(--coral);color:var(--white);padding:16px 40px;text-decoration:none;font-size:16px;font-weight:500;display:inline-flex;align-items:center;min-height:52px}
+      .btn-secondary{background:transparent;color:var(--white);padding:14px 38px;text-decoration:none;font-size:16px;font-weight:500;border:2px solid var(--white);display:inline-flex;align-items:center;min-height:52px}
+      .nav{display:flex;gap:45px;align-items:center}
+      .nav a{color:var(--white);text-decoration:none;font-size:15px;font-weight:400;letter-spacing:0.3px}
+      .nav-cta{background:var(--coral);padding:12px 32px;color:var(--white)!important;font-weight:500}
+      .menu-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:6px;padding:8px;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+      .menu-toggle span{width:25px;height:2px;background:var(--white);transition:0.3s;display:block}
+      @media(max-width:768px){
+        .menu-toggle{display:flex}
+        .header-content{padding:14px 20px}
+        .nav{position:fixed;top:68px;left:-100%;width:100%;height:calc(100vh - 68px);background:var(--dark-gray);flex-direction:column;padding:40px 30px;gap:0;transition:left 0.3s;overflow-y:auto}
+        .nav.active{left:0}
+        .hero{margin-top:68px;background-attachment:scroll;min-height:100svh}
+      }
+    </style>
+
     <link rel="icon" type="image/png" href="images/logos/favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -108,7 +165,8 @@
             <a href="#contacto" class="service-cta">Consultar proyecto →</a>
         </div>
         <div class="service-image-right parallax-container">
-            <div class="parallax-img" data-parallax style="background-image: url('images/proyectos/proyecto-comercial/foto-1.jpg')"></div>
+            <div class="parallax-img" data-parallax
+                 data-bg="images/proyectos/proyecto-comercial/foto-1.webp"></div>
             <div class="service-image-overlay"></div>
         </div>
     </div>
@@ -116,7 +174,8 @@
     <!-- Servicio 2 - Residencial -->
     <div class="service-block reverse">
         <div class="service-image-left parallax-container">
-            <div class="parallax-img" data-parallax style="background-image: url('images/proyectos/proyecto-interiores/foto-1.jpg')"></div>
+            <div class="parallax-img" data-parallax
+                 data-bg="images/proyectos/proyecto-interiores/foto-1.webp"></div>
             <div class="service-image-overlay"></div>
         </div>
         <div class="service-text-right">
@@ -142,7 +201,8 @@
             <a href="#contacto" class="service-cta">Consultar proyecto →</a>
         </div>
         <div class="service-image-right parallax-container">
-            <div class="parallax-img" data-parallax style="background-image: url('images/proyectos/proyecto-industrial/foto-1.jpg')"></div>
+            <div class="parallax-img" data-parallax
+                 data-bg="images/proyectos/proyecto-industrial/foto-1.webp"></div>
             <div class="service-image-overlay"></div>
         </div>
     </div>
@@ -163,13 +223,28 @@
             <div class="project-carousel" data-carousel>
                 <div class="carousel-track">
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-interiores/foto-2.jpg" alt="Terminaciones interiores en Santiago — Manos Expertas" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-interiores/foto-2.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-interiores/foto-2.jpg"
+                                 alt="Terminaciones interiores en Santiago — Manos Expertas"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-interiores/foto-3.jpg" alt="Terminaciones interiores en Santiago — Manos Expertas" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-interiores/foto-3.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-interiores/foto-3.jpg"
+                                 alt="Terminaciones interiores en Santiago — Manos Expertas"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-interiores/foto-4.jpg" alt="Terminaciones interiores en Santiago — Manos Expertas" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-interiores/foto-4.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-interiores/foto-4.jpg"
+                                 alt="Terminaciones interiores en Santiago — Manos Expertas"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                 </div>
                 <button class="carousel-btn carousel-prev" aria-label="Foto anterior">&#8592;</button>
@@ -187,10 +262,20 @@
             <div class="project-carousel" data-carousel>
                 <div class="carousel-track">
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-comercial/foto-2.jpg" alt="Pintura y terminaciones en espacio comercial — Santiago" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-comercial/foto-2.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-comercial/foto-2.jpg"
+                                 alt="Pintura y terminaciones en espacio comercial — Santiago"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-comercial/foto-3.jpg" alt="Pintura y terminaciones en espacio comercial — Santiago" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-comercial/foto-3.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-comercial/foto-3.jpg"
+                                 alt="Pintura y terminaciones en espacio comercial — Santiago"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                 </div>
                 <button class="carousel-btn carousel-prev" aria-label="Foto anterior">&#8592;</button>
@@ -208,10 +293,20 @@
             <div class="project-carousel" data-carousel>
                 <div class="carousel-track">
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-exteriores/foto-1.jpg" alt="Terminaciones y diseño de espacios exteriores — Santiago" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-exteriores/foto-1.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-exteriores/foto-1.jpg"
+                                 alt="Terminaciones y diseño de espacios exteriores — Santiago"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-exteriores/foto-2.jpg" alt="Terminaciones y diseño de espacios exteriores — Santiago" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-exteriores/foto-2.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-exteriores/foto-2.jpg"
+                                 alt="Terminaciones y diseño de espacios exteriores — Santiago"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                 </div>
                 <button class="carousel-btn carousel-prev" aria-label="Foto anterior">&#8592;</button>
@@ -229,10 +324,20 @@
             <div class="project-carousel" data-carousel>
                 <div class="carousel-track">
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-industrial/foto-2.jpg" alt="Protección industrial y pisos epóxicos — Santiago" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-industrial/foto-2.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-industrial/foto-2.jpg"
+                                 alt="Protección industrial y pisos epóxicos — Santiago"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-industrial/foto-3.jpg" alt="Protección industrial y pisos epóxicos — Santiago" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-industrial/foto-3.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-industrial/foto-3.jpg"
+                                 alt="Protección industrial y pisos epóxicos — Santiago"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                 </div>
                 <button class="carousel-btn carousel-prev" aria-label="Foto anterior">&#8592;</button>
@@ -250,10 +355,20 @@
             <div class="project-carousel" data-carousel>
                 <div class="carousel-track">
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-diseno/foto-1.jpg" alt="Diseño interior y acabados de calidad — Santiago" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-diseno/foto-1.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-diseno/foto-1.jpg"
+                                 alt="Diseño interior y acabados de calidad — Santiago"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-diseno/foto-2.jpg" alt="Diseño interior y acabados de calidad — Santiago" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-diseno/foto-2.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-diseno/foto-2.jpg"
+                                 alt="Diseño interior y acabados de calidad — Santiago"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                 </div>
                 <button class="carousel-btn carousel-prev" aria-label="Foto anterior">&#8592;</button>
@@ -271,10 +386,20 @@
             <div class="project-carousel" data-carousel>
                 <div class="carousel-track">
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-interiores/foto-5.jpg" alt="Remodelación integral en Santiago — Manos Expertas" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-interiores/foto-5.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-interiores/foto-5.jpg"
+                                 alt="Remodelación integral en Santiago — Manos Expertas"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                     <div class="carousel-slide">
-                        <img src="images/proyectos/proyecto-interiores/foto-6.jpg" alt="Remodelación integral en Santiago — Manos Expertas" loading="lazy">
+                        <picture>
+                            <source srcset="images/proyectos/proyecto-interiores/foto-6.webp" type="image/webp">
+                            <img src="images/proyectos/proyecto-interiores/foto-6.jpg"
+                                 alt="Remodelación integral en Santiago — Manos Expertas"
+                                 loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                     </div>
                 </div>
                 <button class="carousel-btn carousel-prev" aria-label="Foto anterior">&#8592;</button>
@@ -314,6 +439,7 @@
     </div>
 </section>
 
+<!-- Instagram -->
 <section class="instagram-section" id="instagram">
   <div class="ig-inner">
 
@@ -321,12 +447,10 @@
       <span class="ig-eyebrow">Instagram</span>
       <h2 class="ig-title">Últimos proyectos<br>y novedades</h2>
       <p class="ig-desc">Síguenos en Instagram para ver nuestras actualizaciones, trabajos recientes y el proceso detrás de cada proyecto.</p>
-      <a
-        href="https://www.instagram.com/manos_expertas_spa/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="ig-btn"
-      >
+      <a href="https://www.instagram.com/manos_expertas_spa/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="ig-btn">
         Ver perfil @manos_expertas_spa
         <svg viewBox="0 0 20 20" fill="none" width="14" height="14">
           <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -410,7 +534,6 @@
   min-height: 200px;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .ig-inner {
     grid-template-columns: 1fr;
@@ -430,6 +553,7 @@
   .ig-btn { width: 100%; justify-content: center; }
 }
 </style>
+
 <!-- Contacto -->
 <section class="contact" id="contacto" aria-label="Contacto Manos Expertas">
     <div class="contact-container">

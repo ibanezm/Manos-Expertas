@@ -1,0 +1,172 @@
+# ═══════════════════════════════════════════════════════════
+# MANOS EXPERTAS — .htaccess Performance & Security
+# ═══════════════════════════════════════════════════════════
+
+# ── Activar mod_rewrite ──────────────────────────────────
+Options -Indexes
+Options +FollowSymLinks
+RewriteEngine On
+
+# Redirigir HTTP → HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirigir www → sin www (o al revés, ajustar según preferencia)
+# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+# RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+
+# ═══════════════════════════════════════════════════════════
+# COMPRESIÓN GZIP / BROTLI
+# ═══════════════════════════════════════════════════════════
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/ld+json
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE application/font-woff
+    AddOutputFilterByType DEFLATE application/font-woff2
+
+    # Quitar bugs de proxy
+    <IfModule mod_headers.c>
+        Header append Vary User-Agent
+    </IfModule>
+</IfModule>
+
+# Brotli (si el servidor lo soporta — Nginx/LiteSpeed)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/css
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+    AddOutputFilterByType BROTLI_COMPRESS application/json
+    AddOutputFilterByType BROTLI_COMPRESS font/woff2
+</IfModule>
+
+
+# ═══════════════════════════════════════════════════════════
+# CACHE DEL NAVEGADOR (Browser Caching)
+# ═══════════════════════════════════════════════════════════
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML — sin cache (siempre fresco)
+    ExpiresByType text/html                       "access plus 0 seconds"
+
+    # CSS y JS — 1 año (usar hash en nombre de archivo para invalidar)
+    ExpiresByType text/css                        "access plus 1 year"
+    ExpiresByType application/javascript          "access plus 1 year"
+    ExpiresByType text/javascript                 "access plus 1 year"
+
+    # Imágenes — 1 año
+    ExpiresByType image/jpeg                      "access plus 1 year"
+    ExpiresByType image/jpg                       "access plus 1 year"
+    ExpiresByType image/png                       "access plus 1 year"
+    ExpiresByType image/webp                      "access plus 1 year"
+    ExpiresByType image/gif                       "access plus 1 year"
+    ExpiresByType image/svg+xml                   "access plus 1 year"
+    ExpiresByType image/x-icon                    "access plus 1 year"
+    ExpiresByType image/vnd.microsoft.icon        "access plus 1 year"
+
+    # Fuentes — 1 año
+    ExpiresByType font/woff                       "access plus 1 year"
+    ExpiresByType font/woff2                      "access plus 1 year"
+    ExpiresByType application/font-woff           "access plus 1 year"
+    ExpiresByType application/font-woff2          "access plus 1 year"
+
+    # JSON / XML
+    ExpiresByType application/json                "access plus 0 seconds"
+    ExpiresByType application/ld+json             "access plus 0 seconds"
+    ExpiresByType text/xml                        "access plus 0 seconds"
+
+    # Default
+    ExpiresDefault                                "access plus 1 month"
+</IfModule>
+
+# Cache-Control headers explícitos
+<IfModule mod_headers.c>
+    # Recursos estáticos (imágenes, fuentes, css, js)
+    <FilesMatch "\.(webp|jpg|jpeg|png|gif|svg|ico|woff|woff2|css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # HTML — no cache
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+
+    # Security headers
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+
+# ═══════════════════════════════════════════════════════════
+# SERVIR WEBP AUTOMÁTICAMENTE (si existe la versión .webp)
+# ═══════════════════════════════════════════════════════════
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Servir .webp si el navegador lo soporta y existe el archivo
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$
+    RewriteCond %{REQUEST_FILENAME}.webp -f
+    RewriteRule ^(.+)\.(jpe?g|png)$ $1.$2.webp [T=image/webp,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpe?g|png)\.webp$">
+        Header set Content-Type "image/webp"
+    </FilesMatch>
+</IfModule>
+
+
+# ═══════════════════════════════════════════════════════════
+# MIME TYPES
+# ═══════════════════════════════════════════════════════════
+<IfModule mod_mime.c>
+    AddType image/webp                  .webp
+    AddType font/woff                   .woff
+    AddType font/woff2                  .woff2
+    AddType application/javascript      .js
+    AddType text/css                    .css
+</IfModule>
+
+
+# ═══════════════════════════════════════════════════════════
+# KEEP-ALIVE (conexiones persistentes)
+# ═══════════════════════════════════════════════════════════
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
+<IfModule mod_env.c>
+    SetEnv nokeepalive 0
+</IfModule>
+
+
+# ═══════════════════════════════════════════════════════════
+# PROTECCIÓN BÁSICA
+# ═══════════════════════════════════════════════════════════
+# Bloquear acceso a archivos sensibles
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|bak|config)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Bloquear acceso directo a carpeta de imágenes (opcional — comentar si no se desea)
+# <IfModule mod_autoindex.c>
+#     Options -Indexes
+# </IfModule>

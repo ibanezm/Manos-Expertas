@@ -116,7 +116,6 @@ img {
     flex-direction: column;
     gap: 6px;
     padding: 8px;
-    /* Larger tap target for mobile */
     min-width: 44px;
     min-height: 44px;
     align-items: center;
@@ -137,15 +136,17 @@ img {
 .hero {
     height: 100vh;
     min-height: 600px;
-    background-image: url('images/hero-background.jpg');
+    background-image: url('images/hero-background.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-color: var(--charcoal); /* fallback mientras carga */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     margin-top: 72px;
+    contain: layout;
 }
 
 .hero::after {
@@ -197,10 +198,9 @@ img {
     font-size: 16px;
     font-weight: 500;
     transition: opacity 0.3s;
-    display: inline-block;
-    min-height: 52px;
     display: inline-flex;
     align-items: center;
+    min-height: 52px;
 }
 
 .btn-primary:hover { opacity: 0.9; }
@@ -267,11 +267,10 @@ img {
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
-    display: inline-block;
-    transition: opacity 0.3s;
-    min-height: 50px;
     display: inline-flex;
     align-items: center;
+    transition: opacity 0.3s;
+    min-height: 50px;
 }
 
 .btn-coral:hover { opacity: 0.9; }
@@ -297,7 +296,6 @@ img {
     direction: ltr;
 }
 
-/* Text panels */
 .service-text-left,
 .service-text-right {
     padding: 70px 80px;
@@ -364,6 +362,7 @@ img {
     position: relative;
     overflow: hidden;
     min-height: 520px;
+    contain: layout paint;
 }
 
 .parallax-img {
@@ -374,6 +373,7 @@ img {
     bottom: -15%;
     background-size: cover;
     background-position: center;
+    background-color: #e8e8e8; /* placeholder mientras carga data-bg */
     will-change: transform;
     transition: transform 0.1s linear;
 }
@@ -420,6 +420,8 @@ img {
     transition: transform 0.3s, box-shadow 0.3s;
     border-radius: 2px;
     overflow: hidden;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .project-item:hover {
@@ -432,13 +434,40 @@ img {
     position: relative;
     height: 280px;
     overflow: hidden;
+    /* Shimmer mientras cargan las imágenes */
+    background: linear-gradient(90deg,
+        #f0f0f0 25%,
+        #e8e8e8 37%,
+        #f0f0f0 63%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 1.6s ease infinite;
+}
+
+/* Una vez hay contenido, quitar shimmer */
+.project-carousel:has(.carousel-slide img[src]) {
     background: #eee;
+    animation: none;
+}
+
+@keyframes shimmer {
+    0%   { background-position: 100% 50%; }
+    100% { background-position:   0% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-carousel {
+        animation: none;
+        background: #f0f0f0;
+    }
 }
 
 .carousel-track {
     display: flex;
     height: 100%;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .carousel-slide {
@@ -451,8 +480,16 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    aspect-ratio: 4 / 3;
+    /* Fade-in al cargar */
+    opacity: 0;
+    transition: opacity 0.35s ease, transform 0.4s ease;
     display: block;
+}
+
+/* Activar visibilidad cuando src está presente */
+.carousel-slide img[src] {
+    opacity: 1;
 }
 
 .project-item:hover .carousel-slide img {
@@ -479,7 +516,6 @@ img {
     transition: opacity 0.25s, background 0.2s;
     color: var(--charcoal);
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    /* Larger tap target */
     min-width: 44px;
     min-height: 44px;
 }
@@ -489,7 +525,6 @@ img {
     opacity: 1;
 }
 
-/* Always visible on touch devices */
 @media (hover: none) {
     .carousel-btn { opacity: 1; }
 }
@@ -498,7 +533,6 @@ img {
 .carousel-prev { left: 10px; }
 .carousel-next { right: 10px; }
 
-/* Hide arrows when only 1 slide */
 .project-carousel[data-single] .carousel-btn {
     display: none;
 }
@@ -572,6 +606,8 @@ img {
     padding: 44px;
     border-left: 4px solid var(--coral);
     transition: transform 0.3s;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .testimonial-card:hover {
@@ -828,6 +864,37 @@ img {
 .whatsapp-float svg { width: 34px; height: 34px; }
 
 /* ============================================
+   PERFORMANCE — FADE-IN AL SCROLL
+   Script agrega .fade-in-ready y luego .is-visible
+   via IntersectionObserver
+   ============================================ */
+.fade-in-ready {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.fade-in-ready.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay escalonado para grid de proyectos */
+.project-item:nth-child(2) { transition-delay: 0.08s; }
+.project-item:nth-child(3) { transition-delay: 0.16s; }
+.project-item:nth-child(4) { transition-delay: 0.08s; }
+.project-item:nth-child(5) { transition-delay: 0.16s; }
+.project-item:nth-child(6) { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-ready {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ============================================
    RESPONSIVE — TABLET (≤1024px)
    ============================================ */
 @media (max-width: 1024px) {
@@ -865,7 +932,6 @@ img {
 
 /* ============================================
    RESPONSIVE — MOBILE (≤768px)
-   PRIORITY: everything optimized for phone
    ============================================ */
 @media (max-width: 768px) {
 
@@ -918,7 +984,6 @@ img {
     /* — Hero — */
     .hero {
         margin-top: 68px;
-        /* Disable fixed attachment on mobile (performance + iOS bug) */
         background-attachment: scroll;
         min-height: 100svh;
     }
@@ -968,18 +1033,18 @@ img {
         direction: ltr;
     }
 
-    /* Image comes first on mobile */
     .parallax-container {
         order: -1;
         min-height: 280px;
     }
 
-    /* Disable parallax on mobile (performance) */
+    /* Deshabilitar parallax en mobile (performance) */
     .parallax-img {
         position: absolute;
         top: 0;
         bottom: 0;
         transform: none !important;
+        will-change: auto;
     }
 
     .service-text-left,
@@ -1010,7 +1075,6 @@ img {
         height: 260px;
     }
 
-    /* Show arrows always on touch */
     .carousel-btn {
         opacity: 1;
         width: 36px;
@@ -1052,7 +1116,7 @@ img {
     .form-group input,
     .form-group select,
     .form-group textarea {
-        font-size: 16px; /* Prevents iOS zoom on focus */
+        font-size: 16px; /* Previene zoom en iOS */
         padding: 14px;
     }
 
@@ -1085,6 +1149,11 @@ img {
     .whatsapp-float svg {
         width: 30px;
         height: 30px;
+    }
+
+    /* — Fade-in: desactivar delay en mobile (evita FOUC) — */
+    .project-item:nth-child(n) {
+        transition-delay: 0s;
     }
 }
 
